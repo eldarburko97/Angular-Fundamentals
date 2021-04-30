@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, OnInit, Output, SimpleChanges, EventEmitter } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Employee } from '../models/employee.model';
 
 @Component({
@@ -9,9 +10,11 @@ import { Employee } from '../models/employee.model';
 export class DisplayEmployeeComponent implements OnInit, OnChanges {
   @Input() employee: Employee;
   @Output() notify: EventEmitter<Employee> = new EventEmitter<Employee>();
-  constructor() { }
+  selectedEmployeeId: number;
+  constructor(private _route: ActivatedRoute) { }
   
   ngOnInit() {
+    this.selectedEmployeeId = +this._route.snapshot.paramMap.get('id');
   }
 
   ngOnChanges(changes: SimpleChanges): void {
