@@ -22,7 +22,6 @@ export class EmployeeDetailsComponent implements OnInit {
       this._id = +params.get('id');
       this.employee = this._employeeService.getEmployee(this._id);
     });
-
   }
 
   getNextEmployee() {
