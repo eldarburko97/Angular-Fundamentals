@@ -50,7 +50,7 @@
     </div>
   </div>
   <div class="card-footer">
-    <a class="btn btn-primary" [routerLink]="['/list',{id:employee.id}]">Back to list</a>
+    <a class="btn btn-primary" [routerLink]="['/list',{id:employee.id}]" queryParamsHandling="preserve">Back to list</a>
     <button class="btn btn-primary float-right" (click)="getNextEmployee()">View next employee</button>
   </div>
 </div>
