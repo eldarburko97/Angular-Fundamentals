@@ -21,8 +21,8 @@ export class DisplayEmployeeComponent implements OnInit, OnChanges {
     let previousEmployee = <Employee>changes.employee.previousValue;
     let currentEmployee = <Employee>changes.employee.currentValue;
 
-    console.log('Previous:' + (previousEmployee ? previousEmployee.name : 'NULL'));
-    console.log('Current:' + currentEmployee.name);
+    // console.log('Previous:' + (previousEmployee ? previousEmployee.name : 'NULL'));
+    // console.log('Current:' + currentEmployee.name);
   }
 
   handleClick(){

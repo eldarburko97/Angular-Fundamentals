@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Employee } from "../models/employee.model";
 
+
 @Injectable()
 export class EmployeeService {
     private listEmployees: Employee[] = [
@@ -47,7 +48,7 @@ export class EmployeeService {
         this.listEmployees.push(employee);
     }
 
-    getEmployee(id: number): Employee{
+    getEmployee(id: number): Employee {
         return this.listEmployees.find(e => e.id === id);
     }
 }
