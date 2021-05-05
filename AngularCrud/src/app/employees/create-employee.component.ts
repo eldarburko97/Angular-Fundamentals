@@ -42,6 +42,7 @@ export class CreateEmployeeComponent implements OnInit {
     this._route.paramMap.subscribe(parameterMap => {
       const id = +parameterMap.get('id');
       this.getEmployee(id);
+      console.log("Init");
     })
   }
 

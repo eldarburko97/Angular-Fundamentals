@@ -5,7 +5,7 @@
   {{dataFromChild.name + ' ' + dataFromChild.gender}}
 </h1>
 <div *ngFor="let employee of filteredEmployees">
-  <app-display-employee [employee]="employee" [searchTerm]="searchTerm" (notify)="handleNotify($event)"></app-display-employee>
+  <app-display-employee [employee]="employee" [searchTerm]="searchTerm" (notify)="handleNotify($event)" (notifyDelete)="onDeleteNotification($event)"></app-display-employee>
   <br>
 </div>
 

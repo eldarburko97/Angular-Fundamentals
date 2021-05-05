@@ -52,6 +52,11 @@
   <div class="card-footer">
     <button class="btn btn-primary" (click)="viewEmployee()">View</button>
     <button class="btn btn-success ml-1" (click)="editEmployee()">Edit</button>
-    <button class="btn btn-danger ml-1">Delete</button>
+    <span *ngIf="confirmDelete" class="ml-1">
+      <span>Are you sure you want to delete?</span>
+      <button class="btn btn-danger ml-1" (click)="deleteEmployee()">Yes</button>
+      <button class="btn btn-primary ml-1" (click)="confirmDelete=false">No</button>
+    </span>
+    <button *ngIf="!confirmDelete" class="btn btn-danger ml-1" (click)="confirmDelete=true">Delete</button>
   </div>
 </div>
