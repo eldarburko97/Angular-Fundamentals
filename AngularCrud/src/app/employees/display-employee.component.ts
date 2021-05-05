@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, OnInit, Output, SimpleChanges, EventEmitter } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Employee } from '../models/employee.model';
 
 @Component({
@@ -9,9 +9,10 @@ import { Employee } from '../models/employee.model';
 })
 export class DisplayEmployeeComponent implements OnInit, OnChanges {
   @Input() employee: Employee;
+  @Input() searchTerm: string;
   @Output() notify: EventEmitter<Employee> = new EventEmitter<Employee>();
   selectedEmployeeId: number;
-  constructor(private _route: ActivatedRoute) { }
+  constructor(private _route: ActivatedRoute, private _router: Router) { }
   
   ngOnInit() {
     this.selectedEmployeeId = +this._route.snapshot.paramMap.get('id');
@@ -27,5 +28,13 @@ export class DisplayEmployeeComponent implements OnInit, OnChanges {
 
   handleClick(){
     this.notify.emit(this.employee);
+  }
+
+  viewEmployee(){
+    this._router.navigate(['/employees', this.employee.id], { queryParams: { 'searchTerm': this.searchTerm } });
+  }
+
+  editEmployee(){
+    this._router.navigate(['/edit', this.employee.id]);
   }
 }

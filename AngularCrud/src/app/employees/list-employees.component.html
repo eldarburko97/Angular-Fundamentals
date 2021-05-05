@@ -1,13 +1,11 @@
 <div class="form-group">
-  <input type="text" class="form-control" placeholder="Search by name" style="width: 300px;" [(ngModel)]="searchTerm">
+  <input type="text" class="form-control" placeholder="Search by name" [(ngModel)]="searchTerm">
 </div>
 <h1 *ngIf="dataFromChild">
   {{dataFromChild.name + ' ' + dataFromChild.gender}}
 </h1>
 <div *ngFor="let employee of filteredEmployees">
-  <div (click)="onClick(employee.id)" class="pointerCursor">
-    <app-display-employee [employee]="employee" (notify)="handleNotify($event)"></app-display-employee>
-  </div>
+  <app-display-employee [employee]="employee" [searchTerm]="searchTerm" (notify)="handleNotify($event)"></app-display-employee>
   <br>
 </div>
 

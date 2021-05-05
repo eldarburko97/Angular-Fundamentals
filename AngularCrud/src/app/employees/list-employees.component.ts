@@ -64,9 +64,4 @@ export class ListEmployeesComponent implements OnInit {
   handleNotify(eventData: Employee) {
     this.dataFromChild = eventData;
   }
-
-  onClick(employeeId: number) {
-    this._router.navigate(['/employees', employeeId], { queryParams: { 'searchTerm': this.searchTerm, 'testParam': 'testValue' } });
-  }
-
 }

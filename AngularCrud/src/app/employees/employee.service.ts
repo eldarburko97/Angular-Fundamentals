@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Employee } from "../models/employee.model";
-import {Observable, of} from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/internal/operators';
 
 @Injectable()
@@ -13,7 +13,7 @@ export class EmployeeService {
             contactPreference: 'Email',
             email: 'mark@pragimtech.com',
             dateOfBirth: new Date('10/25/1988'),
-            department: 'IT',
+            department: '3',
             isActive: true,
             photoPath: 'assets/images/mark.png'
         },
@@ -24,7 +24,7 @@ export class EmployeeService {
             contactPreference: 'Phone',
             phoneNumber: 2345978640,
             dateOfBirth: new Date('11/20/1979'),
-            department: 'HR',
+            department: '2',
             isActive: true,
             photoPath: 'assets/images/mary.png'
         },
@@ -35,7 +35,7 @@ export class EmployeeService {
             contactPreference: 'Phone',
             phoneNumber: 5432978640,
             dateOfBirth: new Date('3/25/1976'),
-            department: 'IT',
+            department: '3',
             isActive: false,
             photoPath: 'assets/images/john.png'
         }
@@ -54,7 +54,16 @@ export class EmployeeService {
     }
 
     save(employee: Employee) {
-        this.listEmployees.push(employee);
+        if (employee.id === null) {
+            const maxid = this.listEmployees.reduce(function (e1, e2) {
+                return (e1.id > e2.id) ? e1 : e2;
+            }).id;
+            employee.id = maxid + 1;
+            this.listEmployees.push(employee);
+        } else {
+            const foundIndex = this.listEmployees.findIndex(e => e.id === employee.id);
+            this.listEmployees[foundIndex] = employee;
+        }
     }
 
     getEmployee(id: number): Employee {
