@@ -13,6 +13,7 @@ export class DisplayEmployeeComponent implements OnInit, OnChanges {
   @Input() searchTerm: string;
   @Output() notify: EventEmitter<Employee> = new EventEmitter<Employee>();
   @Output() notifyDelete: EventEmitter<number> = new EventEmitter<number>();
+  @Output() someEvent = new EventEmitter();
   selectedEmployeeId: number;
   confirmDelete = false;
   isHidden = false;
@@ -42,5 +43,13 @@ export class DisplayEmployeeComponent implements OnInit, OnChanges {
     this._router.navigate(['/edit', this.employee.id]);
   }
 
-  
+  deleteEmployee(): void {
+    this._employeeService.deleteEmployee(this.employee.id).subscribe(
+      () => {
+        console.log(`Employee with ID = ${this.employee.id} is deleted`);
+        this.someEvent.emit(null);
+      },
+      (err: any) => console.log(err)
+    );
+  }
 }

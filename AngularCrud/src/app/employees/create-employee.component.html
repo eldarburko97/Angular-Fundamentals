@@ -96,15 +96,14 @@
         <span class="invalid-control" *ngIf="department.errors?.defaultSelected && department.touched">Department is
           required</span>
       </div>
-      {{department.valid}}
       <div class="form-group">
         <label for="dateOfBirth">Date of Birth</label>
-        <input id="dateOfBirth" name="dateOfBirth" [(ngModel)]="employee.dateOfBirth" type="text" bsDatepicker
+        <input id="dateOfBirth" name="dateOfBirth" [(ngModel)]="employee.dateOfBirth" #dateOfBirth="ngModel" type="text" bsDatepicker
           [bsConfig]="datePickerConfig" placement="center" class="form-control">
       </div>
       <div class="form-group">
         <label for="photoPath">Photo Path</label>
-        <input id="photoPath" name="photoPath" [(ngModel)]="employee.photoPath" type="text" class="form-control">
+        <input id="photoPath" name="photoPath" [(ngModel)]="employee.photoPath" type="text" class="form-control" placeholder="assets/images/john.png || assets/images/mark.png || assets/images/mary.png">
       </div>
       <div class="form-group">
         <button type="button" (click)="togglePhotoPreview()" class="btn btn-primary" *ngIf="employee.photoPath !== '' && employee.photoPath !== null">{{previewPhoto? "Hide ": "Show "}}

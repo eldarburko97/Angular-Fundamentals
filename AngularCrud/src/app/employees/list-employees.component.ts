@@ -34,14 +34,14 @@ export class ListEmployeesComponent implements OnInit {
           this.searchTerm = params.get('searchTerm');
         } else {
           this.filteredEmployees = this.employees;
-         // console.log(this.employees.length);
-        for(let i=0; i<this.filteredEmployees.length;i++){
-          console.log(this.filteredEmployees[i].departmentId);
-        }
+          // console.log(this.employees.length);
+          for (let i = 0; i < this.filteredEmployees.length; i++) {
+            console.log(this.filteredEmployees[i].departmentId);
+          }
         }
       });
     });
-
+    console.log("sadads");
     // this.employeeToDisplay = this.employees[0];
     /*
     if (this._route.snapshot.queryParamMap.has('searchTerm')) {
@@ -68,10 +68,17 @@ export class ListEmployeesComponent implements OnInit {
     this.dataFromChild = eventData;
   }
 
-  onDeleteNotification(id: number){
-    const i =  this.filteredEmployees.findIndex(e => e.id === id);
-    if(i !== -1){
-        this.filteredEmployees.splice(i,1);
+  onDeleteNotification(id: number) {
+    const i = this.filteredEmployees.findIndex(e => e.id === id);
+    if (i !== -1) {
+      this.filteredEmployees.splice(i, 1);
     }
+  }
+
+  update(): void {
+    this._employeeService.getEmployees().subscribe(
+      (employees: Employee[]) => { this.filteredEmployees = employees; },
+      (err: any) => console.log(err)
+    );
   }
 }

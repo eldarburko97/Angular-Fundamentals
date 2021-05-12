@@ -6,7 +6,7 @@
 </h1>
 <div *ngFor="let employee of filteredEmployees">
   <app-display-employee [employee]="employee" [searchTerm]="searchTerm" (notify)="handleNotify($event)"
-    (notifyDelete)="onDeleteNotification($event)"></app-display-employee>
+    (notifyDelete)="onDeleteNotification($event)" (someEvent)="update()"></app-display-employee>
   <br>
 </div>
 
