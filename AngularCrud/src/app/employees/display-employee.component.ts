@@ -15,6 +15,7 @@ export class DisplayEmployeeComponent implements OnInit, OnChanges {
   @Output() notifyDelete: EventEmitter<number> = new EventEmitter<number>();
   selectedEmployeeId: number;
   confirmDelete = false;
+  isHidden = false;
   constructor(private _route: ActivatedRoute, private _router: Router, private _employeeService: EmployeeService) { }
 
   ngOnInit() {
@@ -41,8 +42,5 @@ export class DisplayEmployeeComponent implements OnInit, OnChanges {
     this._router.navigate(['/edit', this.employee.id]);
   }
 
-  deleteEmployee() {
-    this._employeeService.deleteEmployee(this.employee.id);
-    this.notifyDelete.emit(this.employee.id);
-  }
+  
 }

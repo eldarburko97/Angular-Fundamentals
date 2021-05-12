@@ -17,6 +17,7 @@ export class CreateEmployeeComponent implements OnInit {
   datePickerConfig: Partial<BsDatepickerConfig>;
   employee: Employee;
   cardTitle: string;
+
   departments: Department[] = [
     { id: 1, name: 'Help Desk' },
     { id: 2, name: 'HR' },
@@ -42,35 +43,52 @@ export class CreateEmployeeComponent implements OnInit {
     this._route.paramMap.subscribe(parameterMap => {
       const id = +parameterMap.get('id');
       this.getEmployee(id);
-      console.log("Init");
     })
   }
+
 
   getEmployee(id: number) {
     if (id == 0) {
       this.employee = {
-        id: null,
+        id: 0,
         name: null,
         gender: null,
         contactPreference: null,
         phoneNumber: null,
         email: null,
         dateOfBirth: null,
-        department: 'select',
+        departmentId: 0,
         isActive: null,
         photoPath: null
       };
       this.createEmployeeForm.reset();
       this.cardTitle = 'Create employee';
     } else {
-      this.employee = Object.assign({}, this._employeeService.getEmployee(id));
+      // this.employee = Object.assign({}, this._employeeService.getEmployee(id));
+      this._employeeService.getEmployee(id).subscribe((emp) => {
+        this.employee = emp;
+      })
       this.cardTitle = 'Edit employee';
     }
   }
 
+  /*
   saveEmployee(): void {
     const newEmployee: Employee = Object.assign({}, this.employee);
     this._employeeService.save(newEmployee);
     this._router.navigate(['list']);
+  }*/
+
+  saveEmployee(): void {
+    const newEmployee: Employee = Object.assign({}, this.employee);
+    console.log(newEmployee);
+    this._employeeService.save(newEmployee).subscribe(
+      (data: Employee) => {
+        console.log(data);
+        this.createEmployeeForm.reset();
+        this._router.navigate(['list']);
+      },
+      (error: any) => { console.log(error); }
+    )
   }
 }

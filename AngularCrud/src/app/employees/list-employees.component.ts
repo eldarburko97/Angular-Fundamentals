@@ -35,6 +35,9 @@ export class ListEmployeesComponent implements OnInit {
         } else {
           this.filteredEmployees = this.employees;
          // console.log(this.employees.length);
+        for(let i=0; i<this.filteredEmployees.length;i++){
+          console.log(this.filteredEmployees[i].departmentId);
+        }
         }
       });
     });

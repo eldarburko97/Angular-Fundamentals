@@ -1,0 +1,14 @@
+C:\Users\Eldar\Desktop\AngularCRUD\EmployeeWebAPI\EmployeeWebAPI\bin\Debug\netcoreapp2.2\EmployeeWebAPI.deps.json
+C:\Users\Eldar\Desktop\AngularCRUD\EmployeeWebAPI\EmployeeWebAPI\bin\Debug\netcoreapp2.2\EmployeeWebAPI.runtimeconfig.json
+C:\Users\Eldar\Desktop\AngularCRUD\EmployeeWebAPI\EmployeeWebAPI\bin\Debug\netcoreapp2.2\EmployeeWebAPI.runtimeconfig.dev.json
+C:\Users\Eldar\Desktop\AngularCRUD\EmployeeWebAPI\EmployeeWebAPI\bin\Debug\netcoreapp2.2\EmployeeWebAPI.dll
+C:\Users\Eldar\Desktop\AngularCRUD\EmployeeWebAPI\EmployeeWebAPI\bin\Debug\netcoreapp2.2\EmployeeWebAPI.pdb
+C:\Users\Eldar\Desktop\AngularCRUD\EmployeeWebAPI\EmployeeWebAPI\obj\Debug\netcoreapp2.2\EmployeeWebAPI.csprojAssemblyReference.cache
+C:\Users\Eldar\Desktop\AngularCRUD\EmployeeWebAPI\EmployeeWebAPI\obj\Debug\netcoreapp2.2\EmployeeWebAPI.csproj.CoreCompileInputs.cache
+C:\Users\Eldar\Desktop\AngularCRUD\EmployeeWebAPI\EmployeeWebAPI\obj\Debug\netcoreapp2.2\EmployeeWebAPI.RazorAssemblyInfo.cache
+C:\Users\Eldar\Desktop\AngularCRUD\EmployeeWebAPI\EmployeeWebAPI\obj\Debug\netcoreapp2.2\EmployeeWebAPI.RazorAssemblyInfo.cs
+C:\Users\Eldar\Desktop\AngularCRUD\EmployeeWebAPI\EmployeeWebAPI\obj\Debug\netcoreapp2.2\EmployeeWebAPI.AssemblyInfoInputs.cache
+C:\Users\Eldar\Desktop\AngularCRUD\EmployeeWebAPI\EmployeeWebAPI\obj\Debug\netcoreapp2.2\EmployeeWebAPI.AssemblyInfo.cs
+C:\Users\Eldar\Desktop\AngularCRUD\EmployeeWebAPI\EmployeeWebAPI\obj\Debug\netcoreapp2.2\EmployeeWebAPI.RazorTargetAssemblyInfo.cache
+C:\Users\Eldar\Desktop\AngularCRUD\EmployeeWebAPI\EmployeeWebAPI\obj\Debug\netcoreapp2.2\EmployeeWebAPI.dll
+C:\Users\Eldar\Desktop\AngularCRUD\EmployeeWebAPI\EmployeeWebAPI\obj\Debug\netcoreapp2.2\EmployeeWebAPI.pdb

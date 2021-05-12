@@ -20,7 +20,12 @@ export class EmployeeDetailsComponent implements OnInit {
 
     this._route.paramMap.subscribe(params => {          //Observable approach
       this._id = +params.get('id');
-      this.employee = this._employeeService.getEmployee(this._id);
+      //this.employee = this._employeeService.getEmployee(this._id);
+      this._employeeService.getEmployee(this._id).subscribe(
+        (empData: Employee) => {
+          this.employee = empData;
+        }
+      )
     });
   }
 

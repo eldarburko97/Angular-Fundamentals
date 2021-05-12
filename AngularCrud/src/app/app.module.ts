@@ -9,6 +9,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { HttpClientModule } from '@angular/common/http';
 import { SelectRequiredValidatorDirective } from './shared/select-required-validator.directive';
 import { ConfirmEqualValidatorDirective } from './shared/confirm-equal-validator.directive';
 import { EmployeeService } from './employees/employee.service';
@@ -19,12 +20,13 @@ import { EmployeeListResolverService } from './employees/employee-list-resolver.
 import { PageNotFoundComponent } from './page-not-found.component';
 import { EmployeeDetailsGuardService } from './employees/employee-details-guard.service';
 
+
 const appRoutes: Routes = [
-  { path: 'list', component: ListEmployeesComponent},
+  { path: 'list', component: ListEmployeesComponent },
   { path: 'edit/:id', component: CreateEmployeeComponent, canDeactivate: [CreateEmployeeCanDeactivateGuardService] },
   { path: 'employees/:id', component: EmployeeDetailsComponent, canActivate: [EmployeeDetailsGuardService] },
   { path: '', redirectTo: '/list', pathMatch: 'full' },
-  {path: 'notfound', component: PageNotFoundComponent}
+  { path: 'notfound', component: PageNotFoundComponent }
 ];
 
 @NgModule({
@@ -43,9 +45,10 @@ const appRoutes: Routes = [
     FormsModule,
     BrowserAnimationsModule,
     BsDatepickerModule.forRoot(),
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule
   ],
-  providers: [EmployeeService, CreateEmployeeCanDeactivateGuardService,EmployeeListResolverService,EmployeeDetailsGuardService],
+  providers: [EmployeeService, CreateEmployeeCanDeactivateGuardService, EmployeeListResolverService, EmployeeDetailsGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

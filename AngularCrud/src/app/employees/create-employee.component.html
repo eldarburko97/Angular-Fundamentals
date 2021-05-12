@@ -72,6 +72,7 @@
         </div>
         <span class="invalid-control" *ngIf="gender.invalid && gender.touched">Gender
           is required</span>
+          {{gender.valid}}
       </div>
       <div class="form-group">
         <div class="form-control">
@@ -85,16 +86,17 @@
       <div class="form-group">
         <label [class.invalid-label]="department.errors?.defaultSelected && department.touched"
           [class.valid-label]="department.valid" for="department">Department</label>
-        <select id="department" name="department" [(ngModel)]="employee.department" class="form-control"
-          #department="ngModel" appSelectValidator="select"
+        <select id="department" name="department" [(ngModel)]="employee.departmentId" class="form-control"
+          #department="ngModel" appSelectValidator="0"
           [class.is-invalid]="department.errors?.defaultSelected && department.touched"
           [class.is-valid]="department.valid">
-          <option value="select">Select a department</option>
+          <option value="0">Select a department</option>
           <option *ngFor="let dept of departments" [value]="dept.id">{{dept.name}}</option>
         </select>
         <span class="invalid-control" *ngIf="department.errors?.defaultSelected && department.touched">Department is
           required</span>
       </div>
+      {{department.valid}}
       <div class="form-group">
         <label for="dateOfBirth">Date of Birth</label>
         <input id="dateOfBirth" name="dateOfBirth" [(ngModel)]="employee.dateOfBirth" type="text" bsDatepicker
