@@ -55,12 +55,14 @@ export class EmployeeService {
     //     return of(this.listEmployees).pipe(delay(2000));  // Delay operator
     // }
 
+    baseUrl = 'https://localhost:44307/api/Employees';
+
     getEmployees(): Observable<Employee[]> {
         return this.httpClient.get<Employee[]>('https://localhost:44307/api/Employees');
     }
 
     getEmployee(id: number): Observable<Employee> {
-        return this.httpClient.get<Employee>('https://localhost:44307/api/Employees/' + id);
+        return this.httpClient.get<Employee>('https://localhost:44307/api/Employees/' + id).pipe(catchError(this.handleError));
     }
 
     save(employee: Employee): Observable<Employee> {
@@ -68,6 +70,22 @@ export class EmployeeService {
             return this.httpClient.post<Employee>('https://localhost:44307/api/Employees', employee)
                 .pipe(catchError(this.handleError));
         }
+    }
+
+    addEmployee(employee: Employee): Observable<Employee> {
+        if (employee.id === 0) {
+            return this.httpClient.post<Employee>('https://localhost:44307/api/Employees', employee)
+                .pipe(catchError(this.handleError));
+        }
+    }
+    
+
+    updateEmployee(employee: Employee): Observable<void> {
+        return this.httpClient.put<void>(`${this.baseUrl}/${employee.id}`, employee, {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json'
+            })
+        }).pipe(catchError(this.handleError));
     }
 
     private handleError(errorResponse: HttpErrorResponse) {

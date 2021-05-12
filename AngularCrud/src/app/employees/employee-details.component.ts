@@ -24,8 +24,9 @@ export class EmployeeDetailsComponent implements OnInit {
       this._employeeService.getEmployee(this._id).subscribe(
         (empData: Employee) => {
           this.employee = empData;
-        }
-      )
+        },
+        (err: any) => { console.log(err); }
+      );
     });
   }
 
@@ -35,7 +36,7 @@ export class EmployeeDetailsComponent implements OnInit {
     } else {
       this._id = 1;
     }
-    this._router.navigate(['/employees', this._id], {queryParamsHandling: 'preserve'});
+    this._router.navigate(['/employees', this._id], { queryParamsHandling: 'preserve' });
   }
 
 }

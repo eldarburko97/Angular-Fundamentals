@@ -5,6 +5,7 @@ import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { Employee } from '../models/employee.model';
 import { EmployeeService } from './employee.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { error } from 'selenium-webdriver';
 
 @Component({
   selector: 'app-create-employee',
@@ -67,7 +68,7 @@ export class CreateEmployeeComponent implements OnInit {
       // this.employee = Object.assign({}, this._employeeService.getEmployee(id));
       this._employeeService.getEmployee(id).subscribe((emp) => {
         this.employee = emp;
-      })
+      }, (err: any) => { console.log(err) });
       this.cardTitle = 'Edit employee';
     }
   }
@@ -81,14 +82,23 @@ export class CreateEmployeeComponent implements OnInit {
 
   saveEmployee(): void {
     const newEmployee: Employee = Object.assign({}, this.employee);
-    console.log(newEmployee);
-    this._employeeService.save(newEmployee).subscribe(
-      (data: Employee) => {
-        console.log(data);
-        this.createEmployeeForm.reset();
-        this._router.navigate(['list']);
-      },
-      (error: any) => { console.log(error); }
-    )
+    if (this.employee.id === 0) {
+      console.log(newEmployee);
+      this._employeeService.save(newEmployee).subscribe(
+        (data: Employee) => {
+          console.log(data);
+          //this.createEmployeeForm.reset(); // This function is called in create-employee.component view template
+          this._router.navigate(['list']);
+        },
+        (error: any) => { console.log(error); }
+      )
+    } else {
+      this._employeeService.updateEmployee(newEmployee).subscribe(
+        () => {
+          this._router.navigate(['list']);
+        },
+        (error: any) => { console.log(error); }
+      );
+    }
   }
 }

@@ -1,5 +1,5 @@
 <form #employeeForm="ngForm" (ngSubmit)="saveEmployee(); employeeForm.reset()" autocomplete="off">
-  <div class="card">
+  <div *ngIf="employee" class="card">
     <div class="card-header text-white bg-primary">
       {{cardTitle}}
     </div>
